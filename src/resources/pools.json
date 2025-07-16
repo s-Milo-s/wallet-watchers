@@ -1,0 +1,10 @@
+{
+    "data" : [
+        {
+        "pool_slug":"arbitrum_uniswap_v3_wethusdc",
+        "name": "Arbitrum - Uniswap - WETH/USDC",
+        "chain":"Arbitrum", 
+        "DEX": "Uniswap"
+        }
+    ]
+}
