@@ -3,7 +3,6 @@ import { ListItemButton, ListItemText, Typography, Box } from "@mui/material";
 
 export default function PoolTabRich({ pool, selected, onClick }) {
   const [chain, dex, pair] = pool.name.split(" - ");
-
   return (
     <ListItemButton
       selected={selected}

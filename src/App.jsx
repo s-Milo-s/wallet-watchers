@@ -7,6 +7,7 @@ import {
   Drawer,
   Box,
   IconButton,
+  Divider
 } from "@mui/material";
 import KeyboardDoubleArrowLeftIcon  from "@mui/icons-material/KeyboardDoubleArrowLeft";
 
@@ -27,6 +28,7 @@ const theme = createTheme({
 
 export default function App() {
   const [open, setOpen] = useState(true);
+  const [poolSlug, setPoolSlug] = useState(true);
 
   const toggleDrawer = () => setOpen((o) => !o);
   const drawerWidth  = open ? drawerWidthOpen : drawerWidthClosed;
@@ -63,8 +65,8 @@ export default function App() {
             <Typography variant="subtitle1" noWrap>
               Wallet Watchers
             </Typography>
-          )}
 
+          )}
           <IconButton
           onClick={toggleDrawer}
           // disableFocusRipple   // ⟵ no focus ring
@@ -92,7 +94,7 @@ export default function App() {
             pointerEvents: open ? "auto" : "none",   // disable clicks when closed
           }}
         >
-          <PoolsList />
+          <PoolsList value={poolSlug} onUpdate={setPoolSlug} />
        </Box>
       </Drawer>
 
@@ -102,9 +104,9 @@ export default function App() {
         sx={{
           ml: `${drawerWidth}px`,
           width: `calc(100vw - ${drawerWidth}px)`,
-          p: 3,
-          mt: 2,                       /* space below drawer header */
-          height: "calc(100vh - 56px)",/* 56 = drawer header height */
+          p: 0,
+          mt: 0,                       /* space below drawer header */
+          height: "calc(100vh)",/* 56 = drawer header height */
           transition: "margin-left 0.2s, width 0.2s",
         }}
       >
