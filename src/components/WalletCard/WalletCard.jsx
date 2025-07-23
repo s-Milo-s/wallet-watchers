@@ -3,7 +3,8 @@ import BubbleChart from "./BubbleChart";
 import TopWallets from "./TopWallets";
 import Divider from '@mui/material/Divider';
 
-export default function WalletCard() {
+export default function WalletCard({currentPool}) {
+  console.log(currentPool.poolSlug)
   return (
     <Card
       sx={{
@@ -20,12 +21,17 @@ export default function WalletCard() {
       {/* Bubble chart – fixed 75 % of card height */}
       <Box>
         <Typography sx={{ px: 1.5, py: 1, color: "grey.500" }}>
-          Arbitrum - Uniswap - WETH/USDC
+          {currentPool.name}
         </Typography>
         <Divider/>
       </Box>
-      <Box sx={{ flex: "0 0 70%", minHeight: 0, display: "flex"}}>
-        <BubbleChart />
+      <Box sx={{ 
+        flex: "0 0 70%", 
+        minHeight: 0, 
+        display: "flex",
+        px: 5,
+        }}>
+        <BubbleChart poolSlug={currentPool.poolSlug}/>
       </Box>
 
       {/* Top wallets – fixed 25 % of card height */}
@@ -34,9 +40,10 @@ export default function WalletCard() {
           flex: "0 0 30%",   // 25 % height, scrolls inside
           minHeight: 0,
           display: "flex",
+          px: 5,
         }}
       >
-        <TopWallets />
+        <TopWallets poolSlug={currentPool.poolSlug}/>
       </Box>
     </Card>
   );

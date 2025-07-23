@@ -12,7 +12,11 @@ export default function PoolTabRich({ pool, selected, onClick }) {
         borderRadius: 1,
         alignItems: "flex-start",
         minHeight: 48,                 // ← fixed row height
-        overflow: "hidden",            // ← clip text, don’t grow
+        overflow: "hidden",            
+        "&.Mui-selected, &.Mui-selected:hover": {
+        bgcolor: "grey.800",      // or any brand colour you prefer
+       },
+    //    "&.Mui-selected  .MuiTypography-root": { color: "primary.main" },
       }}
     >
       <ListItemText

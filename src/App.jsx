@@ -13,7 +13,7 @@ import KeyboardDoubleArrowLeftIcon  from "@mui/icons-material/KeyboardDoubleArro
 
 import WalletCard from "./components/WalletCard/WalletCard";
 import PoolsList  from "./components/PoolList/PoolList";
-
+import raw from "./resources/pools.json";
 const drawerWidthOpen   = 240;
 const drawerWidthClosed = 72;   // just wide enough for the icon
 
@@ -27,8 +27,21 @@ const theme = createTheme({
 });
 
 export default function App() {
+
+  const pools = raw.data.map((p, idx) => ({
+        id:   idx + 1,
+        ...p
+  }));
+
+  console.log(pools)
   const [open, setOpen] = useState(true);
-  const [poolSlug, setPoolSlug] = useState(true);
+  const [currentPool, setCurrentPool] = useState({
+        "poolSlug":"arbitrum_uniswap_v3_wethusdc",
+        "name": "Arbitrum - Uniswap - WETH/USDC",
+        "chain":"Arbitrum", 
+        "DEX": "Uniswap",
+        "pair": "WETH/USDC"
+        });
 
   const toggleDrawer = () => setOpen((o) => !o);
   const drawerWidth  = open ? drawerWidthOpen : drawerWidthClosed;
@@ -94,7 +107,7 @@ export default function App() {
             pointerEvents: open ? "auto" : "none",   // disable clicks when closed
           }}
         >
-          <PoolsList value={poolSlug} onUpdate={setPoolSlug} />
+          <PoolsList poolList = {pools} onUpdate={setCurrentPool} />
        </Box>
       </Drawer>
 
@@ -110,7 +123,7 @@ export default function App() {
           transition: "margin-left 0.2s, width 0.2s",
         }}
       >
-        <WalletCard />
+        <WalletCard currentPool={currentPool}/>
       </Box>
     </ThemeProvider>
   );

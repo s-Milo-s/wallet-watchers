@@ -1,23 +1,15 @@
 // PoolsList.jsx
 import React, { useState } from "react";
 import { Box, List, Typography } from "@mui/material";
-import raw from "../../resources/pools.json";
 import PoolTabRich from "./PoolTabRich";           // ← import the rich tab
 
-export default function PoolsList({ value, onUpdate }) {
+export default function PoolsList({ poolList, onUpdate }) {
     
-  /* turn JSON into an array with 1-based id */
-    const pools = raw.data.map((p, idx) => ({
-        id:   idx + 1,
-        slug: p.pool_slug,
-        name: p.name,
-    }));
-
-    const [selectedId, setSelectedId] = useState(pools[0]?.id ?? null);
-    // const handlePoolchange = (slug,id) => {
-    //     onUpdate(slug);
-    //     setSelectedId(pool.id)
-    // };
+    const [selectedId, setSelectedId] = useState(1);
+    const handlePoolchange = (id) => {
+        setSelectedId(id)
+        onUpdate(poolList[id-1]);
+    };
 
 
   return (
@@ -27,12 +19,12 @@ export default function PoolsList({ value, onUpdate }) {
       </Typography>
 
       <List dense disablePadding>
-        {pools.map((pool) => (
+        {poolList.map((pool) => (
           <PoolTabRich
             key={pool.id}
             pool={pool}
             selected={pool.id === selectedId}
-            onClick={() => setSelectedId(pool.id)}
+            onClick={() => handlePoolchange(pool.id)}
           />
         ))}
       </List>

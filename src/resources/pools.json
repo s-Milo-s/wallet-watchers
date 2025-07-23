@@ -1,10 +1,18 @@
 {
     "data" : [
         {
-        "pool_slug":"arbitrum_uniswap_v3_wethusdc",
+        "poolSlug":"arbitrum_uniswap_v3_wethusdc",
         "name": "Arbitrum - Uniswap - WETH/USDC",
         "chain":"Arbitrum", 
-        "DEX": "Uniswap"
+        "DEX": "Uniswap",
+        "pair": "WETH/USDC"
+        },
+        {
+        "poolSlug":"arbitrum_uniswap_v3_wbtcusdt0",
+        "name": "Arbitrum - Uniswap - WBTC/USDT",
+        "chain":"Arbitrum", 
+        "DEX": "Uniswap",
+        "pair": "WBTC/USDT"
         }
     ]
 }

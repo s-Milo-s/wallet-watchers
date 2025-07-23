@@ -23,7 +23,7 @@ function useWalletMetrics(poolSlug) {
 // ------------------------------------------------------------------
 // BubbleChart component
 // ------------------------------------------------------------------
-export default function BubbleChart({ poolSlug = 'arbitrum_uniswap_v3_wethusdc' }) {
+export default function BubbleChart({ poolSlug }) {
   const { data = [], isLoading, error } = useWalletMetrics(poolSlug);
 
   if (isLoading)
