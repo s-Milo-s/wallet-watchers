@@ -2,6 +2,7 @@ import { Card, Box ,Typography} from "@mui/material";
 import BubbleChart from "./BubbleChart";
 import TopWallets from "./TopWallets";
 import Divider from '@mui/material/Divider';
+import PoolStatsHeader from "./PoolStatsHeader";
 
 export default function WalletCard({currentPool}) {
   return (
@@ -19,9 +20,9 @@ export default function WalletCard({currentPool}) {
     >
       {/* Bubble chart – fixed 75 % of card height */}
       <Box>
-        <Typography sx={{ px: 1.5, py: 1, color: "grey.500" }}>
-          {currentPool.name}
-        </Typography>
+        <PoolStatsHeader                       // NEW component in place of old header
+          currentPool={currentPool}          // pass current pool data
+        />
         <Divider/>
       </Box>
       <Box sx={{ 
