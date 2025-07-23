@@ -33,7 +33,6 @@ export default function App() {
         ...p
   }));
 
-  console.log(pools)
   const [open, setOpen] = useState(true);
   const [currentPool, setCurrentPool] = useState({
         "poolSlug":"arbitrum_uniswap_v3_wethusdc",

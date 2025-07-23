@@ -2,16 +2,17 @@ import React from 'react';
 import { Box, CircularProgress } from '@mui/material';
 import Plot from 'react-plotly.js';
 import { useQuery } from '@tanstack/react-query';
-
+const apiBase = import.meta.env.VITE_API_BASE;
 // ------------------------------------------------------------------
 // Hook – fetch wallet‑metrics JSON
 // ------------------------------------------------------------------
+
 function useWalletMetrics(poolSlug) {
   return useQuery({
     queryKey: ['walletMetrics', poolSlug],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:4000/api/wallet-metrics/${poolSlug}`
+        `${apiBase}/api/wallet-metrics/${poolSlug}`
       );
       if (!res.ok) throw new Error('Network error');
       return res.json();

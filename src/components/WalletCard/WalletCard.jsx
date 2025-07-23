@@ -4,7 +4,6 @@ import TopWallets from "./TopWallets";
 import Divider from '@mui/material/Divider';
 
 export default function WalletCard({currentPool}) {
-  console.log(currentPool.poolSlug)
   return (
     <Card
       sx={{

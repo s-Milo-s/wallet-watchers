@@ -2,13 +2,14 @@ import React from "react";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import WalletRow from "./WalleRow";
+const apiBase = import.meta.env.VITE_API_BASE;
 
 /* -------- data fetch helper -------- */
 const useTopWallets = (pool) =>
   useQuery({
     queryKey: ["topWallets", pool],
     queryFn: async () => {
-      const r = await fetch(`http://localhost:4000/api/top-wallets/${pool}`);
+      const r = await fetch(`${apiBase}/api/top-wallets/${pool}`);
       if (!r.ok) throw new Error("network");
       return r.json();
     },
