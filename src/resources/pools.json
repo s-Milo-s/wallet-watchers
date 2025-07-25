@@ -13,6 +13,13 @@
         "chain":"Arbitrum", 
         "DEX": "Uniswap",
         "pair": "WBTC/USDT"
+        },
+        {
+        "poolSlug":"arbitrum_uniswap_v3_arbweth",
+        "name": "Arbitrum - Uniswap - ARB/WETH",
+        "chain":"Arbitrum", 
+        "DEX": "Uniswap",
+        "pair": "ARB/WETH"
         }
     ]
 }
