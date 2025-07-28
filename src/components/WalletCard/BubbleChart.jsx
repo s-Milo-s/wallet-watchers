@@ -104,7 +104,7 @@ export default function BubbleChart({ poolSlug }) {
     font: { color: softWhite },
       template: 'plotly_dark',
      title: {
-      text: 'Wallet Profiler (Prev 180 Days) — Size = Avg Trade Size, Colour = Number of Trades',
+      text: 'Wallet Profiler (Prev 90 Days) — Size = Avg Trade Size, Colour = Number of Trades',
       y: 0.96,          // nudge title down a hair
       pad: { t: 10 },   // 10-px gap above it
     },

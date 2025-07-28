@@ -20,6 +20,27 @@
         "chain":"Arbitrum", 
         "DEX": "Uniswap",
         "pair": "ARB/WETH"
+        },
+        {
+        "poolSlug":"arbitrum_uniswap_v3_crvweth",
+        "name": "Arbitrum - Uniswap - CRV/WETH",
+        "chain":"Arbitrum", 
+        "DEX": "Uniswap",
+        "pair": "CRV/WETH"
+        },
+        {
+        "poolSlug":"base_aerodrome_degenweth",
+        "name": "Base - Aerodrome - DEGEN/WETH",
+        "chain":"Base", 
+        "DEX": "Aerodrome",
+        "pair": "DEGEN/WETH"
+        },
+        {
+        "poolSlug":"base_aerodrome_brettweth",
+        "name": "Base - Aerodrome - BRETT/WETH",
+        "chain":"Base", 
+        "DEX": "Aerodrome",
+        "pair": "BRETT/WETH"
         }
     ]
 }
