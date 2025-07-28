@@ -67,8 +67,8 @@ export default function HeatMap({ poolSlug }) {
       ]}
       layout={{
         title: {
-          text: `Hourly Volume Heat‑map`,
-          x: 0.1,
+          text: `Hourly Volume Heat‑map (30 Days)`,
+          x: 0.15,
           xanchor: "center",
           font: { size: 16 },
         },

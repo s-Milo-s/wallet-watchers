@@ -64,14 +64,13 @@ export default function BuySellPressureChart({ poolSlug }) {
       ]}
       layout={{
         title: {
-          text: `Buy / Sell Pressure & Volume`,
+          text: `Buy / Sell Pressure & Volume (30 Days)`,
           x: 0.5,              // left‑align
           xanchor: "center",
           y: 0.95,
           font: { size: 18 },
         },
         autosize: true,
-        height: 600,
         margin: { t: 60, l: 60, r: 40, b: 60 },
         paper_bgcolor: "rgba(0,0,0,0)",
         plot_bgcolor: "rgba(0,0,0,0)",
@@ -98,7 +97,7 @@ export default function BuySellPressureChart({ poolSlug }) {
         },
       }}
       config={{ displayModeBar: false, responsive: true }}
-      style={{ width: "100%", height: "100%" }}
+      style={{ width: "100%", height: "105%" }}
     />
   );
 }
