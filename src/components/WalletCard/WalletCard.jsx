@@ -1,10 +1,13 @@
-import { Card, Box ,Typography} from "@mui/material";
+import { Card, Box, Divider, Slide } from "@mui/material";
+import { useState } from "react";
 import BubbleChart from "./BubbleChart";
-import TopWallets from "./TopWallets";
-import Divider from '@mui/material/Divider';
+import TopWallets  from "./TopWallets";
 import PoolStatsHeader from "./PoolStatsHeader";
+import InsightsPanel   from "../Insights/InsightsPanel";
 
-export default function WalletCard({currentPool}) {
+export default function WalletCard({ currentPool }) {
+  const [showInsights, setShowInsights] = useState(false);
+
   return (
     <Card
       sx={{
@@ -16,34 +19,38 @@ export default function WalletCard({currentPool}) {
         flexDirection: "column",
         p: 1,
         gap: 0,
+        overflow: "hidden",
       }}
     >
-      {/* Bubble chart – fixed 75 % of card height */}
-      <Box>
-        <PoolStatsHeader                       // NEW component in place of old header
-          currentPool={currentPool}          // pass current pool data
-        />
-        <Divider/>
-      </Box>
-      <Box sx={{ 
-        flex: "0 0 70%", 
-        minHeight: 0, 
-        display: "flex",
-        px: 5,
-        }}>
-        <BubbleChart poolSlug={currentPool.poolSlug}/>
-      </Box>
+      {/* Header with toggle arrow */}
+      <PoolStatsHeader
+        currentPool={currentPool}
+        showInsights={showInsights}
+        onToggle={() => setShowInsights((v) => !v)}
+      />
+      <Divider />
 
-      {/* Top wallets – fixed 25 % of card height */}
-      <Box
-        sx={{
-          flex: "0 0 30%",   // 25 % height, scrolls inside
-          minHeight: 0,
-          display: "flex",
-          px: 5,
-        }}
-      >
-        <TopWallets poolSlug={currentPool.poolSlug}/>
+      {/* MAIN BODY – slide between two views */}
+      <Box sx={{ position: "relative", flexGrow: 1, minHeight: 0 }}>
+        {/* Wallet metrics view */}
+        <Slide direction="right" in={!showInsights} mountOnEnter unmountOnExit>
+          <Box sx={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column" }}>
+            <Box sx={{ flex: "0 0 70%", minHeight: 0, px: 5 }}>
+              <BubbleChart poolSlug={currentPool.poolSlug} />
+            </Box>
+             <Divider sx={{ my: 2 }} />
+            <Box sx={{ flex: "0 0 30%", minHeight: 0, px: 5 }}>
+              <TopWallets poolSlug={currentPool.poolSlug} />
+            </Box>
+          </Box>
+        </Slide>
+
+        {/* Insights view */}
+        <Slide direction="left" in={showInsights} mountOnEnter unmountOnExit>
+          <Box sx={{ position: "absolute", inset: 0 }}>
+            <InsightsPanel poolSlug={currentPool.poolSlug} />
+          </Box>
+        </Slide>
       </Box>
     </Card>
   );
